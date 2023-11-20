@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./question.module.css";
 
 const Question = ({ question, answer }) => {
-  const [isShowAnswer, setShowState] = useState(false);
+  const [isShowAnswer, setShowAnswer] = useState(false);
 
   const showAnswer = () => {
-    setShowState(true);
+    setShowAnswer(true);
+  };
+
+  const buttonMouseOver = () => {
+    setTitle("yyyyyyy");
   };
 
   return (
     <div className={styles.wrapper}>
       <div>{question}</div>
 
-      {isShowAnswer && <div>{answer}</div>}
+      {isShowAnswer ? (
+        <div>{answer}</div>
+      ) : (
+        <div>To see answer press on " Show Answer" button</div>
+      )}
 
       <button onClick={showAnswer} className={styles.button}>
         Show Answer
